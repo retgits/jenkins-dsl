@@ -1,13 +1,27 @@
-freeStyleJob('mirror-dockerfiles') {
- displayName('mirror-dockerfiles')
- description('Mirror github.com/retgits/dockerfiles')
+// Project information
+String project = "blog"
+String icon = "search.png"
+
+// GitHub information
+String gitHubRepository = "dockerfiles"
+String gitHubUser = "retgits"
+
+// Gogs information
+String gogsRepository = "dockerfiles"
+String gogsUser = "retgits"
+String gogsHost = "ubusrvls.na.tibco.com:3000"
+
+// Job DSL definition
+freeStyleJob("mirror-$project") {
+ displayName("mirror-$project")
+ description("Mirror github.com/$gitHubUser/$gitHubRepository")
 
  checkoutRetryCount(3)
 
  properties {
-  githubProjectUrl('https://github.com/retgits/dockerfiles')
+  githubProjectUrl("https://github.com/$gitHubUser/$gitHubRepository")
   sidebarLinks {
-   link('http://leons-mbp.na.tibco.com:10080/retgits/dockerfiles', 'retgits/dockerfiles', 'notepad.png')
+   link("http://$gogsHost/$gogsUser/$gogsRepository", "Gogs", "$icon")
   }
  }
 
@@ -23,13 +37,13 @@ freeStyleJob('mirror-dockerfiles') {
  wrappers {
   colorizeOutput()
   credentialsBinding {
-   usernamePassword('GOGS_USERPASS', 'eb7f29a7-dbf0-4d6d-a407-6ac8dc4bf63b')
+   usernamePassword('GOGS_USERPASS', 'gogs')
   }
  }
 
  steps {
-  shell('git clone --mirror https://github.com/retgits/dockerfiles repo')
-  shell('cd repo && git push --mirror http://$GOGS_USERPASS@leons-mbp.na.tibco.com:10080/retgits/dockerfiles.git')
+  shell("git clone --mirror https://github.com/$gitHubUser/$gitHubRepository repo")
+  shell("cd repo && git push --mirror http://\$GOGS_USERPASS@gogs:3000/$gogsUser/$gogsRepository")
  }
 
  publishers {

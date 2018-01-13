@@ -1,13 +1,27 @@
-freeStyleJob('mirror-kubefiles') {
- displayName('mirror-kubefiles')
- description('Mirror github.com/retgits/kubefiles')
+// Project information
+String project = "blog"
+String icon = "search.png"
+
+// GitHub information
+String gitHubRepository = "kubefiles"
+String gitHubUser = "retgits"
+
+// Gogs information
+String gogsRepository = "kubefiles"
+String gogsUser = "retgits"
+String gogsHost = "ubusrvls.na.tibco.com:3000"
+
+// Job DSL definition
+freeStyleJob("mirror-$project") {
+ displayName("mirror-$project")
+ description("Mirror github.com/$gitHubUser/$gitHubRepository")
 
  checkoutRetryCount(3)
 
  properties {
-  githubProjectUrl('https://github.com/retgits/kubefiles')
+  githubProjectUrl("https://github.com/$gitHubUser/$gitHubRepository")
   sidebarLinks {
-   link('http://leons-mbp.na.tibco.com:10080/retgits/kubefiles', 'retgits/kubefiles', 'notepad.png')
+   link("http://$gogsHost/$gogsUser/$gogsRepository", "Gogs", "$icon")
   }
  }
 
@@ -23,13 +37,13 @@ freeStyleJob('mirror-kubefiles') {
  wrappers {
   colorizeOutput()
   credentialsBinding {
-   usernamePassword('GOGS_USERPASS', 'eb7f29a7-dbf0-4d6d-a407-6ac8dc4bf63b')
+   usernamePassword('GOGS_USERPASS', 'gogs')
   }
  }
 
  steps {
-  shell('git clone --mirror https://github.com/retgits/kubefiles repo')
-  shell('cd repo && git push --mirror http://$GOGS_USERPASS@leons-mbp.na.tibco.com:10080/retgits/kubefiles.git')
+  shell("git clone --mirror https://github.com/$gitHubUser/$gitHubRepository repo")
+  shell("cd repo && git push --mirror http://\$GOGS_USERPASS@gogs:3000/$gogsUser/$gogsRepository")
  }
 
  publishers {
