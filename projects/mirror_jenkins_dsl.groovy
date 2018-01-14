@@ -1,5 +1,5 @@
 // Project information
-String project = "blog"
+String project = "jenkins-dsl"
 String icon = "search.png"
 
 // GitHub information
