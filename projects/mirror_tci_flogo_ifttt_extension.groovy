@@ -1,13 +1,13 @@
 // Project information
-String project = "flogo-serverless"
+String project = "blog"
 String icon = "search.png"
 
 // GitHub information
-String gitHubRepository = "flogo-serverless"
+String gitHubRepository = "tci-flogo-ifttt-extension"
 String gitHubUser = "retgits"
 
 // Gogs information
-String gogsRepository = "flogo-serverless"
+String gogsRepository = "tci-flogo-ifttt-extension"
 String gogsUser = "retgits"
 String gogsHost = "ubusrvls.na.tibco.com:3000"
 
