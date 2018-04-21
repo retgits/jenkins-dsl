@@ -1,5 +1,5 @@
 // Project information
-String project = "blog"
+String project = "tci-flogo-ifttt-extension"
 String icon = "search.png"
 
 // GitHub information
