@@ -47,6 +47,11 @@ freeStyleJob("mirror-$project") {
  }
 
  publishers {
+  mailer {
+   recipients('$ADMIN_EMAIL')
+   notifyEveryUnstableBuild(true)
+   sendToIndividuals(false)
+  }
   wsCleanup()
  }
 }

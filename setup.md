@@ -11,6 +11,8 @@
 * Environment Injector Plugin
 ## Configuration
 ### Configure System [Jenkins]
+#### Global properties
+* Environment variable `ADMIN_EMAIL`: `<email redacted>`
 #### Theme
 * URL of theme CSS: https://cdn.rawgit.com/afonsof/jenkins-material-theme/gh-pages/dist/material-light-blue.css
 #### Jenkins Location
