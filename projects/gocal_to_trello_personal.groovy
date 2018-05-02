@@ -1,9 +1,9 @@
 // Project information
-String project = "Github to Trello - Lambda"
+String project = "Google Calendar to Trello (Personal) - Lambda"
 String icon = "search.png"
 
 // Gogs information
-String gogsRepository = "github-to-trello"
+String gogsRepository = "gocal-to-trello"
 String gogsUser = "retgits"
 String gogsHost = "ubusrvls.na.tibco.com:3000"
 String gogsInternalUrl = "gogs:3000"
@@ -47,6 +47,8 @@ freeStyleJob("$project") {
  steps {
   shell('#!/bin/bash\n' +
         'go get github.com/mikefarah/yq\n' +
+        'yq w -i serverless.yml service calendar-to-trello-personal\n'+
+        'yq w -i serverless.yml functions.gocaltrello.environment.FUNCTIONTYPE personal\n'+
         'for row in $(yq r serverless.yml provider.environment); do if [[ $row = *":"* ]]; then param=${row::-1}; $(yq w -i serverless.yml provider.environment.${param} ${!param}); fi; done\n' +
         'shopt -s extglob\n' +
         'GOPATH=$(pwd)\n' +
@@ -54,7 +56,7 @@ freeStyleJob("$project") {
         'mv !(src) src/project\n' +
         'cd src/project\n' +
         'dep ensure\n' +
-        'env GOOS=linux go build -ldflags="-s -w" -o bin/ghtrello ghtrello/*.go\n' +
+        'env GOOS=linux go build -ldflags="-s -w" -o bin/gocaltrello gocaltrello/*.go\n' +
         'serverless deploy')
  }
 
