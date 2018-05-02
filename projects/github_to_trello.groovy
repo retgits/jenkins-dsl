@@ -46,6 +46,8 @@ freeStyleJob("$project") {
 
  steps {
   shell('#!/bin/bash\n' +
+        'export AWS_ACCESS_KEY_ID=$AWSACCESSKEYID\n' + 
+        'export AWS_SECRET_ACCESS_KEY=$AWSSECRETACCESSKEY\n' + 
         'go get github.com/mikefarah/yq\n' +
         'for row in $(yq r serverless.yml provider.environment); do if [[ $row = *":"* ]]; then param=${row::-1}; $(yq w -i serverless.yml provider.environment.${param} ${!param}); fi; done\n' +
         'shopt -s extglob\n' +

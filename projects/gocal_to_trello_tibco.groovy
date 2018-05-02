@@ -46,6 +46,8 @@ freeStyleJob("$project") {
 
  steps {
   shell('#!/bin/bash\n' +
+        'export AWS_ACCESS_KEY_ID=$AWSACCESSKEYID\n' + 
+        'export AWS_SECRET_ACCESS_KEY=$AWSSECRETACCESSKEY\n' + 
         'go get github.com/mikefarah/yq\n' +
         'yq w -i serverless.yml service calendar-to-trello-tibco\n'+
         'yq w -i serverless.yml functions.gocaltrello.environment.FUNCTIONTYPE tibco\n'+
