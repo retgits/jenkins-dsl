@@ -67,7 +67,7 @@ freeStyleJob("$project") {
         './hugobin/hugo\n' + 
         'rm -r !(public)\n' +
         "git remote set-url origin http://\$GOGS_USERPASS@gogs:3000/$gogsUser/$gogsRepository\n" +
-        'git add -A . && git commit -a -m "Update pages" && git push origin pages')
+        'git add -A . && git commit -a -m "Update pages" && git push origin pages --force')
  }
 
  publishers {
