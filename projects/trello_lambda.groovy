@@ -56,10 +56,7 @@ freeStyleJob("$project") {
         "find . -type f -name '*.sh' -exec chmod +x {} \\;\n" +
         "#Perform the build\n" +
         "cd src/$gogsRepository\n" +
-        "./build.sh deps\n" +
-        "./build.sh clean\n" +
-        "./build.sh build\n" +
-        "./build.sh getparams")
+        "./build.sh deploy\n")
  }
 
  publishers {
