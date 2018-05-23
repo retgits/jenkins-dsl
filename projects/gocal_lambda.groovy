@@ -60,7 +60,7 @@ freeStyleJob("$project") {
         "export FUNC=GocalPersonal\n" +
         "mv template_personal.yaml template.yaml\n" +
         "./build.sh deploy\n" + 
-        "export FUNC=GocalTibco\n" +
+        "export FUNC=GocalTIBCO\n" +
         "mv template_tibco.yaml template.yaml\n" +
         "./build.sh deploy\n")
  }
