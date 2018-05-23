@@ -62,7 +62,7 @@ freeStyleJob("$project") {
         "./build.sh deploy\n" + 
         "export FUNC=GocalTibco\n" +
         "mv template_tibco.yaml template.yaml\n" +
-        "./build.sh deploy\n" +)
+        "./build.sh deploy\n")
  }
 
  publishers {
