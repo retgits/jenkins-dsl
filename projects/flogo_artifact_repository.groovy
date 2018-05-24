@@ -58,20 +58,16 @@ freeStyleJob("$project") {
   shell('#!/bin/bash\n' +
         "cd src/$gogsRepository\n" +
         'export GHACCESSTOKEN=$GHACCESSTOKEN\n' +
-        'export TOMLFILE=./data/items.toml\n' +
-        'rm -rf public/*\n' +
+        'export TOMLFILE=./items.toml\n' +
         'go get -u github.com/nareix/curl\n' +
         'go get -u github.com/tomnomnom/linkheader\n' +
         'go run build.go\n' +
-        'wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v0.38.1/hugo_0.38.1_Linux-64bit.tar.gz\n' +
-        'mkdir -p hugobin\n' +
-        'tar -xzvf hugo.tar.gz -C ./hugobin\n' +
-        'shopt -s extglob\n' +
-        'git checkout -b pages\n' + 
-        './hugobin/hugo\n' + 
-        'rm -r !(public)\n' +
+        "sed -i '1,3d' items.toml\n" +
+        "sed -i '1i \\' items.toml\n" +
+        "sed -i '1i lastmodified = \"'`date +%Y%m%d`'\"' items.toml\n" +
+        "sed -i '1i [[version]]' items.toml\n" +
         "git remote set-url origin http://\$GOGS_USERPASS@gogs:3000/$gogsUser/$gogsRepository\n" +
-        'git add -A . && git commit -a -m "Update pages" && git push origin pages --force')
+        'git add -A . && git commit -a -m "Update `date +%Y%m%d`" && git push origin master --force')
  }
 
  publishers {
