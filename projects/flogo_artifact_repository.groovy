@@ -1,5 +1,5 @@
 // Project information
-String project = "Flogo Artifact Repository"
+String project = "Flogo Artifact Repository" 
 String icon = "search.png"
 
 // Gogs information
@@ -31,6 +31,7 @@ freeStyleJob("$project") {
    extensions {
     wipeOutWorkspace()
     cleanAfterCheckout()
+    relativeTargetDirectory("src/$gogsRepository")
    }
   }
  }
@@ -51,8 +52,11 @@ freeStyleJob("$project") {
   }
  }
 
+ environmentVariables(GOPATH: '$WORKSPACE')
+
  steps {
   shell('#!/bin/bash\n' +
+        "cd src/$gogsRepository\n" +
         'export GHACCESSTOKEN=$GHACCESSTOKEN\n' +
         'export TOMLFILE=./data/items.toml\n' +
         'rm -rf public/*\n' +
