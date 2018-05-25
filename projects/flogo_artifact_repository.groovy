@@ -61,6 +61,7 @@ freeStyleJob("$project") {
         'export TOMLFILE=./items.toml\n' +
         'go get -u github.com/nareix/curl\n' +
         'go get -u github.com/tomnomnom/linkheader\n' +
+        'git checkout master\n' +
         'go run build.go\n' +
         "sed -i '1,3d' items.toml\n" +
         "sed -i '1i \\' items.toml\n" +
