@@ -2,11 +2,9 @@
 String project = "GitHub - Lambda"
 String icon = "search.png"
 
-// Gogs information
-String gogsRepository = "github-lambda"
-String gogsUser = "retgits"
-String gogsHost = "ubusrvls.na.tibco.com:3000"
-String gogsInternalUrl = "gogs:3000"
+// GitHub information
+String gitHubRepository = "github-lambda"
+String gitHubUser = "retgits"
 
 // Job DSL definition
 freeStyleJob("$project") {
@@ -17,21 +15,20 @@ freeStyleJob("$project") {
 
  properties {
   sidebarLinks {
-   link("http://$gogsHost/$gogsUser/$gogsRepository", "Gogs", "$icon")
+   link("https://github.com/$gitHubUser/$gitHubRepository", "GitHub", "$icon")
   }
  }
 
  scm {
   git {
    remote {
-    url("http://$gogsInternalUrl/$gogsUser/$gogsRepository")
-    credentials('gogs')
+    url("https://github.com/$gitHubUser/$gitHubRepository")
    }
    branches('*/master')
    extensions {
     wipeOutWorkspace()
     cleanAfterCheckout()
-    relativeTargetDirectory("src/$gogsRepository")
+    relativeTargetDirectory("src/$gitHubRepository")
    }
   }
  }
@@ -55,7 +52,7 @@ freeStyleJob("$project") {
         "export AWS_DEFAULT_REGION=\$AWSREGION\n" +
         "find . -type f -name '*.sh' -exec chmod +x {} \\;\n" +
         "#Perform the build\n" +
-        "cd src/$gogsRepository\n" +
+        "cd src/$gitHubRepository\n" +
         "./build.sh deps\n" +
         "./build.sh deploy\n")
  }
