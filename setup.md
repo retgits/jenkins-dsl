@@ -1,8 +1,6 @@
 # Docker file for my own Jenkins build
 ## Additional plugins
-* Gogs plugin
 * Go Plugin
-* NodeJS Plugin
 * AnsiColor
 * Job DSL
 * Sidebar Link
@@ -35,6 +33,8 @@
 * Name: go-192
 * Install automatically: Yes
 * Version: Go 1.9.2
+### Configure global security
+* Enable script security for Job DSL scripts: `disabled` (_not a best practice though..._)
 ## Usage
 ### Build
 ```
