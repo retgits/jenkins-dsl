@@ -30,9 +30,9 @@
 * Charset: UTF-8
 ### Global Tool Configuration
 #### Go
-* Name: go-192
+* Name: go-1103
 * Install automatically: Yes
-* Version: Go 1.9.2
+* Version: Go 1.10.3
 ### Configure global security
 * Enable script security for Job DSL scripts: `disabled` (_not a best practice though..._)
 ## Usage
