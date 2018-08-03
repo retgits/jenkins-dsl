@@ -1,27 +1,23 @@
-// Project information
+// Project
 String project = "flogo-components"
 String icon = "search.png"
 
-// GitHub information
-String gitHubRepository = "flogo-components"
-String gitHubUser = "retgits"
-
-// Gogs information
-String gogsRepository = "flogo-components"
-String gogsUser = "retgits"
-String gogsHost = "ubusrvls.na.tibco.com:3000"
+// Version Control
+String repository = "flogo-components"
+String user = "retgits"
+String gogs = "ubusrvls.na.tibco.com:3000"
 
 // Job DSL definition
-freeStyleJob("mirror-$project") {
- displayName("mirror-$project")
- description("Mirror github.com/$gitHubUser/$gitHubRepository")
+freeStyleJob("mirror $project") {
+ displayName("mirror $project")
+ description("Mirror github.com/$user/$repository")
 
  checkoutRetryCount(3)
 
  properties {
-  githubProjectUrl("https://github.com/$gitHubUser/$gitHubRepository")
+  githubProjectUrl("https://github.com/$user/$repository")
   sidebarLinks {
-   link("http://$gogsHost/$gogsUser/$gogsRepository", "Gogs", "$icon")
+   link("http://$gogs/$user/$repository", "Gogs", "$icon")
   }
  }
 
@@ -42,8 +38,8 @@ freeStyleJob("mirror-$project") {
  }
 
  steps {
-  shell("git clone --mirror https://github.com/$gitHubUser/$gitHubRepository repo")
-  shell("cd repo && git push --mirror http://\$GOGS_USERPASS@gogs:3000/$gogsUser/$gogsRepository")
+  shell("git clone --mirror https://github.com/$user/$repository repo")
+  shell("cd repo && git push --mirror http://\$GOGS_USERPASS@gogs:3000/$user/$repository")
  }
 
  publishers {

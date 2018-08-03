@@ -1,5 +1,5 @@
-freeStyleJob('update-dsl') {
- displayName('update-dsl')
+freeStyleJob('update dsl') {
+ displayName('update dsl')
  description('Updates all the Jenkins DSLs in the jenkins-dsl repository.')
 
  checkoutRetryCount(3)

@@ -1,9 +1,9 @@
 // Project
-String project = "dotfiles"
+String project = "lambda-builder"
 String icon = "search.png"
 
 // Version Control
-String repository = "dotfiles"
+String repository = "lambda-builder"
 String user = "retgits"
 String gogs = "ubusrvls.na.tibco.com:3000"
 

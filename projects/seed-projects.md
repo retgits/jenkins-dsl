@@ -2,8 +2,8 @@
 Create a new Jenkins Freestyle project with the below code to automatically create `update-dsl`, which in turn can be triggered to create the other items
 
 ```
-freeStyleJob('update-dsl') {
- displayName('update-dsl')
+freeStyleJob('update dsl') {
+ displayName('update dsl')
  description('Updatess all the Jenkins DSLs in the jenkins-dsl repository.')
 
  checkoutRetryCount(3)
