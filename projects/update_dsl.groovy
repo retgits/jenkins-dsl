@@ -26,7 +26,9 @@ freeStyleJob('update dsl') {
   }
  }
 
- triggers {}
+ triggers {
+  cron('@daily')
+ }
 
  wrappers {
   colorizeOutput()
