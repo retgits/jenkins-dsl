@@ -7,7 +7,7 @@
 # NOMIRROR contains a list of GitHub repos that do not need to have a mirror in Jenkins
 NOMIRROR=',gclone,lc,lambda-builder,wtf,'
 
-for repo in $(cat ~/repos.json| jq '.[] .name')
+for repo in $(curl 'https://api.github.com/users/retgits/repos' | jq '.[] .name')
 do
     origRepo=${repo//\"/}
 	repo=${origRepo//[-.]/_}
