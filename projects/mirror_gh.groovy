@@ -1,9 +1,9 @@
 // Project
-String project = "ghhelper"
+String project = "gh"
 String icon = "search.png"
 
 // Version Control
-String repository = "ghhelper"
+String repository = "gh"
 String user = "retgits"
 String gogs = "ubusrvls.na.tibco.com:3000"
 

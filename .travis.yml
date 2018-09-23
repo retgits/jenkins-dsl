@@ -1,0 +1,9 @@
+language: minimal
+
+addons:
+  apt:
+    packages:
+    - jq
+
+script:
+  - make test
