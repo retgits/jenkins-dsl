@@ -1,5 +1,6 @@
 # Docker file for my own Jenkins build
 ## Additional plugins
+* AWS SAM Plugin
 * Go Plugin
 * AnsiColor
 * Job DSL
