@@ -1,9 +1,9 @@
 // Project
-String project = "contactform-lambda"
+String project = "serverless-contactform"
 String icon = "search.png"
 
 // Version Control
-String repository = "contactform-lambda"
+String repository = "serverless-contactform"
 String user = "retgits"
 String gogs = "ubudevrel.local"
 
