@@ -1,7 +1,8 @@
 # seed-projects
+
 Create a new Jenkins Freestyle project with the below code to automatically create `update-dsl`, which in turn can be triggered to create the other items
 
-```
+```groovy
 freeStyleJob('update dsl') {
  displayName('update dsl')
  description('Updatess all the Jenkins DSLs in the jenkins-dsl repository.')

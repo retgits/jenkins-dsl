@@ -1,9 +1,9 @@
 // Project
-String project = "fdio-stats-lambda"
+String project = "mofo-campaignurl"
 String icon = "search.png"
 
 // Version Control
-String repository = "fdio-stats-lambda"
+String repository = "mofo-campaignurl"
 String user = "retgits"
 String gogs = "ubudevrel.local"
 

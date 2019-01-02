@@ -5,7 +5,7 @@ String icon = "search.png"
 // Version Control
 String repository = "flogowebhelper"
 String user = "retgits"
-String gogs = "ubusrvls.na.tibco.com:3000"
+String gogs = "ubudevrel.local"
 
 // Job DSL definition
 freeStyleJob("mirror $project") {
@@ -39,7 +39,7 @@ freeStyleJob("mirror $project") {
 
  steps {
   shell("git clone --mirror https://github.com/$user/$repository repo")
-  shell("cd repo && git push --mirror http://\$GOGS_USERPASS@gogs:3000/$user/$repository")
+  shell("cd repo && git push --mirror http://\$GOGS_USERPASS@ubudevrel.local/$user/$repository")
  }
 
  publishers {
