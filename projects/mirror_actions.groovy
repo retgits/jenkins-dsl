@@ -39,7 +39,7 @@ freeStyleJob("mirror $project") {
 
  steps {
   shell("git clone --mirror https://github.com/$user/$repository repo")
-  shell("cd repo && git push --mirror http://\$GOGS_USERPASS@ubudevrel.local/$user/$repository")
+  shell("cd repo && git push --mirror http://\$GOGS_USERPASS@ubudevrel.local/gogs/$user/$repository")
  }
 
  publishers {
