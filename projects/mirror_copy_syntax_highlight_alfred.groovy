@@ -1,9 +1,9 @@
 // Project
-String project = "flogo-slackbot"
+String project = "copy-syntax-highlight-alfred"
 String icon = "search.png"
 
 // Version Control
-String repository = "flogo-slackbot"
+String repository = "copy-syntax-highlight-alfred"
 String user = "retgits"
 String gogs = "ubudevrel.local/gogs"
 

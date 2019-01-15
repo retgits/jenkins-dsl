@@ -5,7 +5,7 @@
 # Last Updated: 2019-01-02
 
 # NOMIRROR contains a list of GitHub repos that do not need to have a mirror in Jenkins
-NOMIRROR=',gclone,lc,lambda-builder,wtf,kubefiles,flogo-presentation,slacker,jfrog-cli-go,artifactory-go-blog-4,artifactory-go-blog-3,artifactory-go-blog-2,'
+NOMIRROR=',gclone,lc,lambda-builder,wtf,kubefiles,flogo-presentation,slacker,jfrog-cli-go,artifactory-go-blog-4,artifactory-go-blog-3,artifactory-go-blog-2,jfrog-devrel'
 
 for repo in $(curl 'https://api.github.com/users/retgits/repos' | jq '.[] .name')
 do

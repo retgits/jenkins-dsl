@@ -5,7 +5,7 @@ String icon = "search.png"
 // Version Control
 String repository = "flogo-components"
 String user = "retgits"
-String gogs = "ubudevrel.local"
+String gogs = "ubudevrel.local/gogs"
 
 // Job DSL definition
 freeStyleJob("mirror $project") {
