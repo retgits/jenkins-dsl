@@ -4,6 +4,6 @@ workflow "New workflow" {
 }
 
 action "Shell" {
-  uses = "actions/bin/sh@master"
+  uses = "retgits/actions/sh@master"
   args = ["./scripts/validate.sh"]
 }
