@@ -38,7 +38,7 @@ freeStyleJob("$project") {
   shell("make deps")
   shell("make docker")
   shell("docker tag $user/$repository:latest $user/$repository:\$BUILD_NUMBER")
-  shell("docker stop $user/$repository && docker rm $user/$repository")
+  shell("docker stop $repository && docker rm $repository")
   shell("docker run -d -p 9999:9999 --name $repository $user/$repository:\$BUILD_NUMBER")
  }
 
