@@ -7,11 +7,13 @@
 # NOMIRROR contains a list of GitHub repos that do not need to have a mirror in Jenkins
 NOMIRROR=',gclone,lc,lambda-builder,wtf,kubefiles,flogo-presentation,slacker,jfrog-cli-go,artifactory-go-blog-4,artifactory-go-blog-3,artifactory-go-blog-2,jfrog-devrel'
 
-for repo in $(curl 'https://api.github.com/users/retgits/repos' | jq '.[] .name')
+REPOS=$(curl -H "Authorization: Bearer ${GITHUB_TOKEN}" 'https://api.github.com/users/retgits/repos' | jq '.[] .name')
+
+for repo in ${REPOS}
 do
     origRepo=${repo//\"/}
 	repo=${origRepo//[-.]/_}
-	if [[ ! -f ../projects/mirror_$repo.groovy ]]; then
+	if [[ ! -f ./projects/mirror_$repo.groovy ]]; then
 		if [[ $NOMIRROR != *",$origRepo,"* ]];then
 			echo Found no mirror for $origRepo
 			ERR=true

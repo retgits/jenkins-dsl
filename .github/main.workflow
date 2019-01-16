@@ -6,4 +6,5 @@ workflow "New workflow" {
 action "Shell" {
   uses = "retgits/actions/sh@master"
   args = ["./scripts/validate.sh"]
+  secrets = ["GITHUB_TOKEN"]
 }
