@@ -33,9 +33,9 @@ freeStyleJob("$project") {
   shell("git clone https://\$GITHUB_USERPASS@github.com/$user/$repository .")
   shell("make deps")
   shell("make docker SERVERNAME=10.6.18.185 PORT=9999 PROXY=true PREFIX=retgits")
-  shell("docker tag $user/$project:latest $user/$project:\$BUILD_NUMBER")
+  shell("docker tag retgits/$project:latest retgits/$project:\$BUILD_NUMBER")
   shell("docker stop $project && docker rm $project")
-  shell("docker run -d -p 9999:9999 --name $project $user/$project:\$BUILD_NUMBER")
+  shell("docker run -d -p 9999:9999 --name $project retgits/$project:\$BUILD_NUMBER")
  }
 
  publishers {
