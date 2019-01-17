@@ -3,9 +3,8 @@ String project = "jfrog-devrel"
 String icon = "search.png"
 
 // Version Control
-String repository = "jfrog-devrel"
-String user = "retgits"
-String gogs = "ubudevrel.local/gogs"
+String repository = "devrel-sources"
+String user = "jfrog"
 
 // Job DSL definition
 freeStyleJob("$project") {
@@ -16,9 +15,6 @@ freeStyleJob("$project") {
 
  properties {
   githubProjectUrl("https://github.com/$user/$repository")
-  sidebarLinks {
-   link("http://$gogs/$user/$repository", "Gogs", "$icon")
-  }
  }
 
  logRotator {
@@ -36,10 +32,10 @@ freeStyleJob("$project") {
  steps {
   shell("git clone https://\$GITHUB_USERPASS@github.com/$user/$repository .")
   shell("make deps")
-  shell("make docker")
-  shell("docker tag $user/$repository:latest $user/$repository:\$BUILD_NUMBER")
-  shell("docker stop $repository && docker rm $repository")
-  shell("docker run -d -p 9999:9999 --name $repository $user/$repository:\$BUILD_NUMBER")
+  shell("make docker SERVERNAME=10.6.18.185 PORT=9999 PROXY=true PREFIX=retgits")
+  shell("docker tag $user/$project:latest $user/$project:\$BUILD_NUMBER")
+  shell("docker stop $project && docker rm $project")
+  shell("docker run -d -p 9999:9999 --name $project $user/$project:\$BUILD_NUMBER")
  }
 
  publishers {
