@@ -31,8 +31,7 @@ freeStyleJob("$project") {
 
  steps {
   shell("git clone https://\$GITHUB_USERPASS@github.com/$user/$repository .")
-  shell("cd nginx-proxy")
-  shell("docker build . -t retgits/nginx-proxy:\$BUILD_NUMBER")
+  shell("cd nginx-proxy && docker build . -t retgits/nginx-proxy:\$BUILD_NUMBER")
   shell("docker stop nginx-proxy && docker rm nginx-proxy")
   shell("docker run -d -p 80:80 --name=nginx-proxy retgits/nginx-proxy:\$BUILD_NUMBER")
  }
