@@ -34,6 +34,7 @@ freeStyleJob("$project") {
   shell("make deps")
   shell("make docker SERVERNAME=10.6.18.185 PORT=9999 PROXY=true PREFIX=retgits")
   shell("docker tag retgits/jfrog-devrel:latest retgits/jfrog-devrel:\$BUILD_NUMBER")
+  shell("docker rmi retgits/jfrog-devrel:latest")
   shell("docker stop jfrog-devrel && docker rm jfrog-devrel")
   shell("docker run -d -p 9999:9999 --name jfrog-devrel retgits/jfrog-devrel:\$BUILD_NUMBER")
  }
