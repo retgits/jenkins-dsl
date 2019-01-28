@@ -34,11 +34,12 @@ freeStyleJob("mirror $project") {
   colorizeOutput()
   credentialsBinding {
    usernamePassword('GOGS_USERPASS', 'gogs')
+   usernamePassword('GITHUB_USERPASS', 'github')
   }
  }
 
  steps {
-  shell("git clone --mirror https://github.com/$user/$repository repo")
+  shell("git clone --mirror https://\$GITHUB_USERPASS@github.com/$user/$repository repo")
   shell("cd repo && git push --mirror http://\$GOGS_USERPASS@ubudevrel.local/gogs/$user/$repository")
  }
 
